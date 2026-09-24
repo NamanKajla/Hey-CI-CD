@@ -18,10 +18,6 @@ jobs:
       - name: Show my self
         run: echo "I am a GitHub Action!"
 
-name: Secrets Demo
-on:
-  workflow_dispatch:
-jobs:
   secrets-demo:
     runs-on: ubuntu-latest
     steps:
