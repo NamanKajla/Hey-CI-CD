@@ -11,3 +11,27 @@ jobs:
         run: date
       - name: Show operating system
         run: uname -a
+
+  showmyself:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show my self
+        run: echo "I am a GitHub Action!"
+
+name: Secrets Demo
+on:
+  workflow_dispatch:
+jobs:
+  secrets-demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check secret
+        env:
+          DEMO_SECRET: ${{ secrets.DEMO_SECRET }}
+        run: |
+          if [ -n "$DEMO_SECRET" ]; then
+            echo "Secret is available."
+          else
+            echo "Secret is not configured."
+            exit 1
+          fi
